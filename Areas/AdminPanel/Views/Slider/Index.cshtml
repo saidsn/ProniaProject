@@ -1,0 +1,63 @@
+﻿@model List<Slider>
+
+@{
+    int count = 0;
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Slider Table</h4>
+                <div class="table-responsive">
+                    <a asp-action="create" class="btn btn-success">Create</a>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    No#
+                                </th>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                   Title
+                                </th>
+                                <th>
+                                    Order
+                                </th>
+                                <th>
+                                    Settings
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Slider slider in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>
+                                        <p>@count</p>
+                                    </td>
+                                    <td>
+                                        <img style="width:50px; height:50px" src="~/assets/images/website-images/@slider.ImageURL" />
+                                    </td>
+                                    <td>
+                                        <p>@slider.Title</p>
+                                    </td>
+                                    <td>
+                                        <p>@slider.Order</p>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning" asp-action="update" asp-route-id="@slider.Id"><i class="mdi mdi-border-color"></i></a>
+                                        <a class="btn btn-danger" asp-action="delete" asp-route-id="@slider.Id"><i class="mdi mdi-delete"></i></a>
+                                        <a class="btn btn-primary"><i class="mdi mdi-information"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
